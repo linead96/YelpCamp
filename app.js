@@ -9,13 +9,15 @@ var express     = require("express"),
     Campground  = require("./models/campground"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
-    seedDB      = require("./seeds");
+    seedDB      = require("./seeds"),
+    dotEnv      = require('dotenv').config();
  
 //requiring routes   
 var commentRoutes        = require("./routes/comments"), 
     campgroundRoutes     = require("./routes/campground"),
     indexRoutes          = require("./routes/index");
-  
+
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v11";
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
 //mongoose.connect("mongodb://daniel:daniel96@ds243084.mlab.com:43084/yelpcamp1996", {useNewUrlParser: true});
 
